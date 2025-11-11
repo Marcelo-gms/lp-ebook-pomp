@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/css/output.css">
+    <title>Checkout</title>
+</head>
+
+<body class="min-h-dvh">
+    <div class="min-h-dvh relative flex flex-col">
+
+        <div class="absolute top-0 p-4 flex justify-center items-center w-full hidden " id="toastCopy">
+            <div class="bg-green-500 text-2xl text-white mx-auto p-6 rounded-2xl font-bold">
+                Código Cópiado!
+            </div>
+
+        </div>
+
+
+        <header class="bg-pink-600 text-white py-12 text-center">
+            <h1 class="text-4xl font-extrabold mb-3">Descubra os Segredos do Pompoarismo</h1>
+            <p class="text-lg max-w-xl mx-auto px-4">Aprenda técnicas poderosas para melhorar sua saúde íntima e
+                autoestimacom nosso e-book exclusivo.</p>
+        </header>
+        <div class="" id="info">
+            <div class="flex justify-center mt-3">
+                <div class="px-2">
+                    <h3 class="text-2xl font-bold text-pink-500">Como vou receber meu e-book?</h3>
+                    <p class="text-pink-500">passo 1:</p>
+                    <p class="text-green-500 ">Você informa o E-mail
+                        onde
+                        quer receber o produto.</p>
+                    <p class="text-pink-500">passo 2: </p>
+                    <p class="text-green-500 ">Assim que o sistema
+                        identificar o pagamento,<br> o produto é enviado
+                        para o email fornecido!</p>
+                    <p class="text-pink-500">passo 3:</p>
+                    <p class="text-green-500 ">Após o pagamento
+                        verifique
+                        sua caixa de <br> entrada e a caixa de
+                        Span do seu e-mail.</p>
+
+                    <button class="w-full bg-green-500 p-3 mt-3 font-bold rounded-md text-white"
+                        id="btnGenerateQr">Gerar
+                        Pix</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="min-h-full flex-1 justify-center items-center border hidden" id="loading">
+            <img src="./public/images/loading.svg" alt="loading" class="w-30 h-30 animate-spin">
+        </div>
+
+        <div class="flex-col gap-x-3 justify-center items-center pt-5 hidden " id="containerQr">
+
+            <div class="border border-gray-400 rounded-md mx-auto w-full max-w-[500px] self-center px-4 ">
+                <h1 class="text-center text-2xl px-3 font-bold mt-3">Total a pagar: <span class="text-green-500">R$
+                        24,99</span>
+                </h1>
+
+                <div class="w-70 h-70 border border-red-600 mx-auto mt-3 rounded-md" id="containerImg">
+
+                </div>
+                <div class="p-2 border border-gray-400 my-3 rounded-md">
+
+                    <p class="overflow-hidden text-ellipsis line-clamp-1 " id="textToCopy">
+
+                    </p>
+
+                </div>
+                <button class="w-full bg-green-500 p-3 font-bold rounded-md text-white cursor-pointer"
+                    id="btnCopy">Cópiar</button>
+
+
+
+                <div class="justify-between p-3 items-center mt-3 grid grid-cols-1 sm:grid-cols-2"></div>
+                <div class="w-full h-15 mb-2">
+                    <img src="./public/images/logo-pix.svg" class="w-full h-full" alt="logo pix">
+                </div>
+                <p class="text-sm text-green-500 flex items-center justify-center gap-1 w-full">Ambiente
+                    seguro <img src="./public/images/cadeado.svg" alt="cadeado" class="w-3 max-h-3"> </p>
+            </div>
+
+        </div>
+
+
+
+        <footer class="text-center text-sm text-gray-500 py-4 mt-2 absolute bottom-0 w-full ">
+            &copy; 2025 E-book Pompoarismo. Todos os direitos reservados.
+        </footer>
+    </div>
+
+
+    <script src="./public/scripts/index.js"></script>
+</body>
+
+</html>
