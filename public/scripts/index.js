@@ -6,13 +6,21 @@ const loading = document.querySelector("#loading");
 const info = document.querySelector("#info");
 const containerImg = document.querySelector("#containerImg");
 const toastCopy = document.querySelector("#toastCopy");
+const containerEmail = document.querySelector("#containerEmail");
+const btnStepEmail = document.querySelector("#btnStepEmail");
+const email = document.querySelector("#email");
+const validateEmail = document.querySelector("#validateEmail");
 
 async function getQrcode() {
   try {
-    hiddeElement(info);
+    hiddeElement(containerEmail);
     showElement(loading);
+
     const response = await fetch("http://localhost:3000/payment", {
       method: "POST",
+      data: {
+        email: email.value,
+      },
     });
     const { res } = await response.json();
 
@@ -47,14 +55,32 @@ async function copyToClipboard(text) {
 }
 
 function hiddeElement(el) {
-  el.classList.remove("flex");
-  el.classList.add("hidden");
+  el?.classList.remove("flex");
+  el?.classList.add("hidden");
 }
 
 function showElement(el) {
-  el.classList.remove("hidden");
-  el.classList.add("flex");
+  el?.classList.remove("hidden");
+  el?.classList.add("flex");
 }
 
+btnStepEmail.addEventListener("click", () => {
+  hiddeElement(info);
+  showElement(containerEmail);
+});
 btnCopy.addEventListener("click", () => copyToClipboard(textToCpy.innerText));
-btnGenerateQr.addEventListener("click", getQrcode);
+btnGenerateQr.addEventListener("click", () => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email.value || !emailRegex.test(email.value)) {
+    showElement(validateEmail);
+    email.classList.add("shadow-md", "border-red-500", "shadow-red-500");
+    const idTimer = setTimeout(() => {
+      hiddeElement(validateEmail);
+      email.classList.remove("shadow-md", "border-red-500", "shadow-red-500");
+      clearTimeout(idTimer);
+    }, 2500);
+
+    return;
+  }
+  getQrcode();
+});
