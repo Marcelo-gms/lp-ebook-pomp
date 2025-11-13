@@ -18,9 +18,10 @@ async function getQrcode() {
 
     const response = await fetch("http://localhost:3000/payment", {
       method: "POST",
-      data: {
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         email: email.value,
-      },
+      }),
     });
     const { res } = await response.json();
 
