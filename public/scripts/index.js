@@ -16,13 +16,16 @@ async function getQrcode() {
     hiddeElement(containerEmail);
     showElement(loading);
 
-    const response = await fetch("http://localhost:3000/payment", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: email.value,
-      }),
-    });
+    const response = await fetch(
+      "https://marce6411.c44.integrator.host/payment",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email.value,
+        }),
+      }
+    );
     const { res } = await response.json();
 
     const img = document.createElement("img");
